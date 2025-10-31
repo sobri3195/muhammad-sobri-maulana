@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Sobri Maulana - Portfolio</title>
+    <title>Muhammad Sbri Maulana - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -11,8 +11,13 @@
     <!-- Header Section -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">MS</div>
-            <ul class="nav-links">
+            <div class="logo">MSM</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#cybersecurity">Cybersecurity</a></li>
@@ -40,7 +45,7 @@
             <div class="profile-icon">
                 <i class="fas fa-user-secret"></i>
             </div>
-            <h1>Lettu Kes dr. Muhammad Sobri Maulana</h1>
+            <h1>Lettu Kes dr. Muhammad Sbri Maulana</h1>
             <p class="credentials">S.Kom, CEH, OSCP, OSCE, CISSP</p>
             <p class="tagline">Dokter Militer | Cybersecurity Expert | Pegasus Hacker | Peneliti AI</p>
             <div class="hero-badges">
@@ -354,7 +359,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>AI-Powered Intradialytic Hypotension Prediction System</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, et al.</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, et al.</p>
                 <p class="pub-journal">Journal of Medical AI Systems, 2024</p>
                 <p class="pub-description">Pengembangan sistem prediksi hipotensi intradialisis menggunakan machine learning dengan akurasi 92% untuk meningkatkan keamanan pasien hemodialisis.</p>
                 <div class="pub-links">
@@ -367,7 +372,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>Cybersecurity Framework for Healthcare Information Systems</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, et al.</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, et al.</p>
                 <p class="pub-journal">International Journal of Healthcare Security, 2024</p>
                 <p class="pub-description">Framework komprehensif untuk mengamankan sistem informasi kesehatan dari ancaman siber dengan pendekatan defense-in-depth.</p>
                 <div class="pub-links">
@@ -380,7 +385,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>Deep Learning for Pediatric Disease Diagnosis</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, et al.</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, et al.</p>
                 <p class="pub-journal">Pediatric AI Research, 2023</p>
                 <p class="pub-description">Implementasi deep learning untuk diagnosis penyakit pediatrik dengan dataset multi-modal mencapai sensitivitas 94%.</p>
                 <div class="pub-links">
@@ -393,7 +398,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>Advanced Penetration Testing Methodologies</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, Dohamupretoragean Team</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, Dohamupretoragean Team</p>
                 <p class="pub-journal">Journal of Offensive Security, 2023</p>
                 <p class="pub-description">Metodologi lanjutan dalam penetration testing untuk sistem critical infrastructure dengan focus pada zero-day exploitation.</p>
                 <div class="pub-links">
@@ -406,7 +411,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>Blockchain Technology in Medical Record Security</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, et al.</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, et al.</p>
                 <p class="pub-journal">Healthcare Blockchain Journal, 2023</p>
                 <p class="pub-description">Implementasi teknologi blockchain untuk mengamankan rekam medis elektronik dengan smart contract validation.</p>
                 <div class="pub-links">
@@ -419,7 +424,7 @@
             <div class="publication-card">
                 <div class="pub-icon"><i class="fas fa-book"></i></div>
                 <h3>Machine Learning for Vulnerability Detection</h3>
-                <p class="pub-authors">Muhammad Sobri Maulana, et al.</p>
+                <p class="pub-authors">Muhammad Sbri Maulana, et al.</p>
                 <p class="pub-journal">Cybersecurity Research Quarterly, 2022</p>
                 <p class="pub-description">Penggunaan machine learning untuk deteksi otomatis vulnerability dalam source code dengan precision 89%.</p>
                 <div class="pub-links">
@@ -541,7 +546,39 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Muhammad Sobri Maulana. All rights reserved.</p>
+        <p>&copy; 2024 Muhammad Sbri Maulana. All rights reserved.</p>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6281395203503" class="whatsapp-float" target="_blank" title="Chat via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
