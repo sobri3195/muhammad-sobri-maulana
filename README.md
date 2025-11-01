@@ -62,14 +62,37 @@ Website ini responsif dengan breakpoint berikut:
 
 Mode gelap akan otomatis aktif berdasarkan preferensi sistem pengguna. Tidak diperlukan JavaScript untuk fitur ini.
 
-## Lisensi
+## Penulis
 
-© 2024 Muhammad Sobri Maulana. All rights reserved.
+**Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE**
+
+Dokter Militer, Pengembang Software, dan Content Creator dengan keahlian di bidang kesehatan, teknologi, dan cybersecurity.
 
 ## Kontak
 
-Untuk pertanyaan atau kolaborasi, silakan hubungi melalui:
-- Email: contact@muhammadsobri.com
-- Instagram: [@muhammadsobri](https://instagram.com/muhammadsobri)
-- YouTube: [Muhammad Sobri](https://youtube.com/muhammadsobri)
-- GitHub: [muhammadsobri](https://github.com/muhammadsobri) 
+Untuk pertanyaan, kolaborasi, atau konsultasi, silakan hubungi:
+
+- 📧 **Email**: [muhammadsobrimaulana31@gmail.com](mailto:muhammadsobrimaulana31@gmail.com)
+- 🐙 **GitHub**: [github.com/sobri3195](https://github.com/sobri3195)
+- 🌐 **Website**: [muhammadsobrimaulana.netlify.app](https://muhammadsobrimaulana.netlify.app)
+
+### Media Sosial
+
+- 🎥 **YouTube**: [Muhammad Sobri Maulana](https://www.youtube.com/@muhammadsobrimaulana6013)
+- 📱 **TikTok**: [@dr.sobri](https://www.tiktok.com/@dr.sobri)
+- ✈️ **Telegram**: [winlin_exploit](https://t.me/winlin_exploit)
+- 💬 **WhatsApp Group**: [Join Group](https://chat.whatsapp.com/B8nwRZOBMo64GjTwdXV8Bl)
+
+## Dukung Karya Saya
+
+Jika Anda merasa terbantu dengan karya-karya saya, Anda dapat memberikan dukungan melalui:
+
+- 💰 **Lynk.id**: [muhsobrimaulana](https://lynk.id/muhsobrimaulana)
+- ☕ **Trakteer**: [g9mkave5gauns962u07t](https://trakteer.id/g9mkave5gauns962u07t)
+- 🛍️ **Gumroad**: [maulanasobri.gumroad.com](https://maulanasobri.gumroad.com/)
+- 🎨 **Karyakarsa**: [muhammadsobrimaulana](https://karyakarsa.com/muhammadsobrimaulana)
+- 💝 **Nyawer**: [MuhammadSobriMaulana](https://nyawer.co/MuhammadSobriMaulana)
+
+## Lisensi
+
+© 2024 Muhammad Sobri Maulana. All rights reserved.
