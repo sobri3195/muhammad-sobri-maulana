@@ -906,6 +906,97 @@ section h2 {
     font-weight: 600;
 }
 
+.scholar-profile {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--secondary-color);
+}
+
+.scholar-profile h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.scholar-profile h3 i {
+    color: var(--secondary-color);
+}
+
+.scholar-info {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
+    border-radius: 8px;
+}
+
+.scholar-info p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.scholar-info p:first-child {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.research-interests {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.research-interests i {
+    color: var(--secondary-color);
+}
+
+.citation-stats {
+    margin-top: 1.5rem;
+}
+
+.citation-stats h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.citation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.citation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(52, 152, 219, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.citation-item:hover {
+    background: rgba(52, 152, 219, 0.1);
+    transform: translateX(5px);
+}
+
+.citation-item .label {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.citation-item .value {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
 .publications-grid {
     max-width: 1200px;
     margin: 0 auto 3rem;
