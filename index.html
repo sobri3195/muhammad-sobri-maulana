@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Sobri Maulana - Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🦄</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,25 +12,26 @@
     <!-- Header Section -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">MSM</div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-horse"></i>
+                    <i class="fas fa-feather-alt logo-wing"></i>
+                </div>
+                <span class="logo-text">Muhammad Sobri Maulana</span>
+            </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#experience">Pengalaman</a></li>
-                <li><a href="#education">Pendidikan</a></li>
-                <li><a href="#organizations">Organisasi</a></li>
-                <li><a href="#cybersecurity">Cybersecurity</a></li>
-                <li><a href="#github">GitHub</a></li>
-                <li><a href="#hacking-tools">Hacking Tools</a></li>
-                <li><a href="#research">Penelitian</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> Tentang</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Karir</a></li>
+                <li><a href="#cybersecurity"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+                <li><a href="#portfolio"><i class="fas fa-folder-open"></i> Portfolio</a></li>
+                <li><a href="#game"><i class="fas fa-gamepad"></i> Game</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
             </ul>
         </nav>
     </header>
@@ -2478,6 +2479,55 @@
         </div>
     </section>
 
+    <!-- Interactive Game Section -->
+    <section id="game" class="game-section">
+        <h2><i class="fas fa-gamepad"></i> Perjalanan Hidup Sobri</h2>
+        <p class="section-subtitle">Game Interaktif: Ikuti Jejak Karir Sobri dari Mahasiswa hingga Pegasus Hacker</p>
+        
+        <div class="game-container">
+            <div class="game-display">
+                <div class="game-character">
+                    <i class="fas fa-user-secret game-avatar"></i>
+                </div>
+                <div class="game-story" id="gameStory">
+                    <h3 id="storyTitle">Selamat Datang!</h3>
+                    <p id="storyText">Kamu akan mengikuti perjalanan hidup Muhammad Sobri Maulana. Dari seorang mahasiswa yang bersemangat menjadi Dokter Militer, Cybersecurity Expert, dan Pegasus Hacker. Setiap pilihan yang kamu buat akan membentuk karaktermu!</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-brain"></i>
+                        <span>Intelligence: <strong id="statIntelligence">50</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Cybersecurity: <strong id="statCyber">50</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Medical: <strong id="statMedical">50</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>Level: <strong id="playerLevel">1</strong></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-choices" id="gameChoices">
+                <button class="game-choice-btn" onclick="startGame()">
+                    <i class="fas fa-play"></i> Mulai Perjalanan
+                </button>
+            </div>
+            
+            <div class="game-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <p class="progress-text">Progress: <span id="progressText">0/10</span></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Kontak</h2>
@@ -2508,7 +2558,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Muhammad Sbri Maulana. All rights reserved.</p>
+        <p>&copy; 2024 Muhammad Sobri Maulana. All rights reserved.</p>
     </footer>
 
     <!-- WhatsApp Floating Button -->
@@ -2541,6 +2591,290 @@
                 menuToggle.classList.remove('active');
             }
         });
+    </script>
+
+    <!-- Game Script -->
+    <script>
+        let gameState = {
+            currentStage: 0,
+            stats: {
+                intelligence: 50,
+                cybersecurity: 50,
+                medical: 50,
+                level: 1
+            }
+        };
+
+        const gameStages = [
+            {
+                title: "2012 - Masa Sekolah",
+                text: "Sobri adalah siswa SMA yang cerdas dan penasaran. Dia harus memilih antara fokus pada sains atau mulai belajar programming. Apa yang akan dia pilih?",
+                icon: "fa-school",
+                choices: [
+                    { text: "Fokus pada Biologi dan Kedokteran", stats: { medical: 15, intelligence: 10 } },
+                    { text: "Mulai belajar Programming", stats: { cybersecurity: 15, intelligence: 10 } },
+                    { text: "Seimbangkan keduanya", stats: { medical: 8, cybersecurity: 8, intelligence: 8 } }
+                ]
+            },
+            {
+                title: "2013 - Kuliah Kedokteran",
+                text: "Sobri diterima di Fakultas Kedokteran! Namun dia juga tertarik dengan dunia teknologi. Di waktu luang, apa yang akan dia lakukan?",
+                icon: "fa-user-md",
+                choices: [
+                    { text: "Bergabung dengan komunitas hacker", stats: { cybersecurity: 20, intelligence: 5 } },
+                    { text: "Fokus hanya pada kuliah kedokteran", stats: { medical: 20, intelligence: 10 } },
+                    { text: "Kuliah sambilan di Ilmu Komputer", stats: { cybersecurity: 15, medical: 10, intelligence: 10 } }
+                ]
+            },
+            {
+                title: "2015 - Menemukan Passion",
+                text: "Sobri menemukan komunitas Cyber Security Down. Dia juga mulai mengikuti sertifikasi CEH. Langkah selanjutnya?",
+                icon: "fa-shield-alt",
+                choices: [
+                    { text: "Intensif belajar ethical hacking", stats: { cybersecurity: 25, intelligence: 10 } },
+                    { text: "Tetap fokus kedokteran dulu", stats: { medical: 20, intelligence: 5 } },
+                    { text: "Bangun komunitas cybersecurity", stats: { cybersecurity: 15, intelligence: 15 } }
+                ]
+            },
+            {
+                title: "2017 - OSCP Challenge",
+                text: "Sobri menghadapi tantangan besar: sertifikasi OSCP yang terkenal sulit. Ini akan menguras waktu dan energi. Apa strateginya?",
+                icon: "fa-user-ninja",
+                choices: [
+                    { text: "Latihan intensif 16 jam/hari", stats: { cybersecurity: 30, intelligence: 15 } },
+                    { text: "Belajar sambil tetap praktek kedokteran", stats: { cybersecurity: 20, medical: 15, intelligence: 10 } },
+                    { text: "Belajar dengan komunitas", stats: { cybersecurity: 25, intelligence: 20 } }
+                ]
+            },
+            {
+                title: "2018 - Level Expert",
+                text: "Dengan OSCE di tangan, Sobri sekarang dikenal sebagai Pegasus. Banyak tawaran pekerjaan datang. Mana yang dipilih?",
+                icon: "fa-award",
+                choices: [
+                    { text: "Jadi Penetration Tester profesional", stats: { cybersecurity: 30, intelligence: 15 } },
+                    { text: "Mulai startup teknologi kesehatan", stats: { cybersecurity: 15, medical: 20, intelligence: 20 } },
+                    { text: "Freelance dan berbagi ilmu", stats: { cybersecurity: 20, intelligence: 25 } }
+                ]
+            },
+            {
+                title: "2020 - Era Pandemi",
+                text: "Pandemi COVID-19 mengubah segalanya. Sobri melihat peluang untuk membuat dampak. Proyek apa yang akan dia garap?",
+                icon: "fa-hospital",
+                choices: [
+                    { text: "Sistem Informasi Rumah Sakit (SIMRS)", stats: { medical: 25, cybersecurity: 20, intelligence: 15 } },
+                    { text: "Platform Telemedicine", stats: { medical: 30, intelligence: 20 } },
+                    { text: "AI untuk diagnosis penyakit", stats: { medical: 20, cybersecurity: 15, intelligence: 30 } }
+                ]
+            },
+            {
+                title: "2021 - Lulus Dokter",
+                text: "Sobri resmi menjadi dokter! Tapi ada tawaran menarik dari beberapa perusahaan tech. Apa yang akan dia pilih?",
+                icon: "fa-graduation-cap",
+                choices: [
+                    { text: "CEO di startup teknologi", stats: { intelligence: 30, cybersecurity: 20 } },
+                    { text: "Praktik sebagai dokter murni", stats: { medical: 35, intelligence: 15 } },
+                    { text: "Gabungkan kedokteran dan tech", stats: { medical: 25, cybersecurity: 25, intelligence: 20 } }
+                ]
+            },
+            {
+                title: "2022 - Panggilan Negara",
+                text: "TNI memanggil! Sobri mengikuti program PAPK 29A untuk menjadi perwira kesehatan. Ini akan mengubah hidupnya selamanya.",
+                icon: "fa-flag",
+                choices: [
+                    { text: "Dedikasi penuh untuk militer", stats: { medical: 30, intelligence: 20 } },
+                    { text: "Tetap kembangkan skill cybersecurity", stats: { cybersecurity: 30, medical: 20, intelligence: 15 } },
+                    { text: "Jadi ahli cyber warfare medis", stats: { medical: 25, cybersecurity: 30, intelligence: 25 } }
+                ]
+            },
+            {
+                title: "2023 - Pegasus Rising",
+                text: "Sebagai Lettu Kes, Sobri sekarang memimpin proyek-proyek strategis. Alias Pegasus semakin dikenal di dunia underground. Fokus utama?",
+                icon: "fa-horse",
+                choices: [
+                    { text: "Cyber defense untuk instalasi militer", stats: { cybersecurity: 35, intelligence: 25 } },
+                    { text: "Penelitian AI untuk kesehatan militer", stats: { medical: 30, intelligence: 30 } },
+                    { text: "Pelatihan cyber security untuk medis", stats: { cybersecurity: 30, medical: 25, intelligence: 20 } }
+                ]
+            },
+            {
+                title: "2024 - Legacy",
+                text: "Sobri sekarang adalah Director di SOMANSA dan tokoh berpengaruh. Dia ingin meninggalkan legacy. Apa yang akan dia lakukan?",
+                icon: "fa-trophy",
+                choices: [
+                    { text: "Bangun akademi cyber security", stats: { cybersecurity: 40, intelligence: 35 } },
+                    { text: "Riset AI healthcare breakthrough", stats: { medical: 40, intelligence: 40 } },
+                    { text: "Mentor generasi muda di kedua bidang", stats: { medical: 30, cybersecurity: 30, intelligence: 40 } }
+                ]
+            }
+        ];
+
+        function updateStats(statChanges) {
+            for (let stat in statChanges) {
+                gameState.stats[stat] = Math.min(100, gameState.stats[stat] + statChanges[stat]);
+            }
+            
+            // Update level based on total stats
+            const totalStats = gameState.stats.intelligence + gameState.stats.cybersecurity + gameState.stats.medical;
+            gameState.stats.level = Math.floor(totalStats / 50) + 1;
+            
+            // Update UI
+            document.getElementById('statIntelligence').textContent = gameState.stats.intelligence;
+            document.getElementById('statCyber').textContent = gameState.stats.cybersecurity;
+            document.getElementById('statMedical').textContent = gameState.stats.medical;
+            document.getElementById('playerLevel').textContent = gameState.stats.level;
+        }
+
+        function updateProgress() {
+            const progress = (gameState.currentStage / gameStages.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressText').textContent = gameState.currentStage + '/' + gameStages.length;
+        }
+
+        function showStage(stageIndex) {
+            if (stageIndex >= gameStages.length) {
+                showEnding();
+                return;
+            }
+
+            const stage = gameStages[stageIndex];
+            const avatar = document.querySelector('.game-avatar');
+            
+            // Update character icon based on stage
+            avatar.className = 'fas ' + stage.icon + ' game-avatar';
+            
+            document.getElementById('storyTitle').textContent = stage.title;
+            document.getElementById('storyText').textContent = stage.text;
+
+            const choicesContainer = document.getElementById('gameChoices');
+            choicesContainer.innerHTML = '';
+
+            stage.choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.className = 'game-choice-btn';
+                button.innerHTML = `<i class="fas fa-hand-pointer"></i> ${choice.text}`;
+                button.onclick = () => makeChoice(index);
+                choicesContainer.appendChild(button);
+            });
+
+            updateProgress();
+        }
+
+        function makeChoice(choiceIndex) {
+            const stage = gameStages[gameState.currentStage];
+            const choice = stage.choices[choiceIndex];
+            
+            updateStats(choice.stats);
+            gameState.currentStage++;
+            
+            // Add animation
+            const storyDiv = document.getElementById('gameStory');
+            storyDiv.style.opacity = '0';
+            setTimeout(() => {
+                showStage(gameState.currentStage);
+                storyDiv.style.opacity = '1';
+            }, 300);
+        }
+
+        function showEnding() {
+            const { intelligence, cybersecurity, medical, level } = gameState.stats;
+            const avatar = document.querySelector('.game-avatar');
+            avatar.className = 'fas fa-crown game-avatar';
+            
+            let ending = {
+                title: "",
+                text: "",
+                achievement: ""
+            };
+
+            // Determine ending based on highest stat
+            if (cybersecurity >= medical && cybersecurity >= intelligence) {
+                ending.title = "Pegasus Hacker Legend! 🦄";
+                ending.text = "Kamu mengikuti jejak Sobri menjadi salah satu cybersecurity expert terbaik! Dengan OSCP, OSCE, dan CEH, kamu melindungi sistem-sistem kritis negara. Nama Pegasus akan selalu diingat!";
+                ending.achievement = "Achievement: Master of Cybersecurity";
+            } else if (medical >= cybersecurity && medical >= intelligence) {
+                ending.title = "Dokter Militer Teladan! ⚕️";
+                ending.text = "Kamu mengikuti dedikasi Sobri di bidang kedokteran! Sebagai Lettu Kes, kamu melayani negara dengan keahlian medis tingkat tinggi dan mengembangkan sistem kesehatan militer.";
+                ending.achievement = "Achievement: Medical Hero";
+            } else {
+                ending.title = "Visionary Innovator! 🚀";
+                ending.text = "Kamu mengikuti visi Sobri yang seimbang! Menggabungkan kecerdasan, teknologi, dan kedokteran untuk menciptakan inovasi yang mengubah dunia. Director yang sesungguhnya!";
+                ending.achievement = "Achievement: Renaissance Person";
+            }
+
+            // Special endings for balanced stats
+            if (Math.abs(cybersecurity - medical) <= 20 && Math.abs(cybersecurity - intelligence) <= 20) {
+                ending.title = "True Sobri's Path! 👑";
+                ending.text = "Sempurna! Kamu benar-benar mengikuti jejak Muhammad Sobri Maulana dengan seimbang! Dokter, Hacker, dan Visioner dalam satu paket. Inilah jalan seorang Pegasus sejati!";
+                ending.achievement = "Achievement: The Perfect Balance - Muhammad Sobri Maulana's Legacy";
+            }
+
+            document.getElementById('storyTitle').textContent = ending.title;
+            document.getElementById('storyText').innerHTML = `
+                <p>${ending.text}</p>
+                <div class="ending-stats">
+                    <h4>Final Stats:</h4>
+                    <p>🧠 Intelligence: ${intelligence}/100</p>
+                    <p>🛡️ Cybersecurity: ${cybersecurity}/100</p>
+                    <p>⚕️ Medical: ${medical}/100</p>
+                    <p>⭐ Final Level: ${level}</p>
+                    <p class="achievement">${ending.achievement}</p>
+                </div>
+            `;
+
+            const choicesContainer = document.getElementById('gameChoices');
+            choicesContainer.innerHTML = `
+                <button class="game-choice-btn" onclick="resetGame()">
+                    <i class="fas fa-redo"></i> Main Lagi
+                </button>
+                <button class="game-choice-btn" onclick="shareResult()">
+                    <i class="fas fa-share"></i> Bagikan Hasil
+                </button>
+            `;
+
+            updateProgress();
+        }
+
+        function startGame() {
+            gameState = {
+                currentStage: 0,
+                stats: {
+                    intelligence: 50,
+                    cybersecurity: 50,
+                    medical: 50,
+                    level: 1
+                }
+            };
+            updateStats({});
+            showStage(0);
+        }
+
+        function resetGame() {
+            startGame();
+        }
+
+        function shareResult() {
+            const { intelligence, cybersecurity, medical, level } = gameState.stats;
+            const text = `Aku baru main game "Perjalanan Hidup Sobri"! 
+Final Stats:
+🧠 Intelligence: ${intelligence}
+🛡️ Cybersecurity: ${cybersecurity}
+⚕️ Medical: ${medical}
+⭐ Level: ${level}
+
+Coba juga di muhammadsobrimaulana.netlify.app!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Perjalanan Hidup Sobri - Game Result',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(text);
+                alert('Hasil telah dicopy ke clipboard!');
+            }
+        }
     </script>
 </body>
 </html>
