@@ -4172,6 +4172,16 @@
                 loadingScreen.classList.add('fade-out');
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
+                    
+                    // If there's a hash in URL, ensure the target section is visible
+                    if (window.location.hash) {
+                        const targetSection = document.querySelector(window.location.hash);
+                        if (targetSection) {
+                            targetSection.style.opacity = '1';
+                            targetSection.style.transform = 'translateY(0)';
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
                 }, 500);
             }, 800);
         });
@@ -4202,8 +4212,8 @@
 
         // Intersection Observer for scroll animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.01,
+            rootMargin: '0px 0px -10px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -4219,11 +4229,39 @@
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                // Check if this section is currently in view or being navigated to
+                const hash = window.location.hash.substring(1);
+                const sectionId = section.getAttribute('id');
+                
+                // If the section is the target of the current hash, show it immediately
+                if (hash && sectionId === hash) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                } else {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(20px)';
+                    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                }
                 observer.observe(section);
             });
+            
+            // Force show the first visible section (hero)
+            const heroSection = document.querySelector('#home');
+            if (heroSection) {
+                heroSection.style.opacity = '1';
+                heroSection.style.transform = 'translateY(0)';
+            }
+        });
+
+        // Handle hash changes (when clicking navigation links)
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1);
+            const targetSection = document.getElementById(hash);
+            if (targetSection) {
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
+            }
         });
 
         // Add active nav link on scroll
@@ -4236,6 +4274,11 @@
                 const sectionHeight = section.clientHeight;
                 if (scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
+                    // Ensure the section is visible when scrolled into view
+                    if (section.style.opacity !== '1') {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }
                 }
             });
 

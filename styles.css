@@ -3201,11 +3201,23 @@ section h2::after {
     50% { transform: scale(1.05); }
 }
 
+/* Ensure all sections are visible by default */
+section {
+    display: block;
+    visibility: visible;
+}
+
 /* Comprehensive CV Section Styles */
 .cv-section {
     padding: 4rem 2rem;
     background: var(--section-bg);
     min-height: 100vh;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.cv-section * {
+    visibility: visible !important;
 }
 
 .cv-section h2 {
