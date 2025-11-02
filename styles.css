@@ -98,6 +98,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -525,6 +526,7 @@ body {
 section {
     padding: 5rem 2rem;
     animation: fadeIn 0.8s ease-out;
+    scroll-margin-top: 80px;
 }
 
 section h2 {
