@@ -4,18 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Sobri Maulana - Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🦄</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%233498db'/><stop offset='100%25' style='stop-color:%232980b9'/></linearGradient></defs><path d='M50 5 L85 20 L85 45 Q85 75 50 95 Q15 75 15 45 L15 20 Z' fill='url(%23g)' stroke='%232c3e50' stroke-width='2'/><text x='50' y='55' font-family='Arial' font-size='24' font-weight='bold' fill='white' text-anchor='middle'>MSM</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <svg class="loading-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M50 5 L85 20 L85 45 Q85 75 50 95 Q15 75 15 45 L15 20 Z" 
+                      fill="url(#loadingGradient)" stroke="#2c3e50" stroke-width="2"/>
+                <path class="wing-svg" d="M25 35 Q15 35 10 40 Q5 45 15 50 Q20 48 25 45 Z" 
+                      fill="#ecf0f1" opacity="0.9"/>
+                <path class="wing-svg" d="M75 35 Q85 35 90 40 Q95 45 85 50 Q80 48 75 45 Z" 
+                      fill="#ecf0f1" opacity="0.9"/>
+                <text x="50" y="55" font-family="Arial, sans-serif" font-size="24" 
+                      font-weight="bold" fill="#ffffff" text-anchor="middle">MSM</text>
+            </svg>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading Portfolio...</p>
+        </div>
+    </div>
     <!-- Header Section -->
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-horse"></i>
-                    <i class="fas fa-feather-alt logo-wing"></i>
+                    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pegasus Shield Background -->
+                        <defs>
+                            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ecf0f1;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Shield Shape -->
+                        <path d="M50 5 L85 20 L85 45 Q85 75 50 95 Q15 75 15 45 L15 20 Z" 
+                              fill="url(#shieldGradient)" stroke="#2c3e50" stroke-width="2"/>
+                        
+                        <!-- Wing Left -->
+                        <path class="wing-svg" d="M25 35 Q15 35 10 40 Q5 45 15 50 Q20 48 25 45 Z" 
+                              fill="#ecf0f1" opacity="0.9"/>
+                        
+                        <!-- Wing Right -->
+                        <path class="wing-svg" d="M75 35 Q85 35 90 40 Q95 45 85 50 Q80 48 75 45 Z" 
+                              fill="#ecf0f1" opacity="0.9"/>
+                        
+                        <!-- MSM Initials -->
+                        <text x="50" y="55" font-family="Arial, sans-serif" font-size="24" 
+                              font-weight="bold" fill="url(#textGradient)" text-anchor="middle">MSM</text>
+                        
+                        <!-- Pegasus Symbol (simplified horse head with horn) -->
+                        <circle cx="50" cy="30" r="6" fill="#ecf0f1"/>
+                        <path d="M50 24 L48 18 L52 18 Z" fill="#f39c12"/>
+                        <circle cx="47" cy="29" r="1.5" fill="#2c3e50"/>
+                        <circle cx="53" cy="29" r="1.5" fill="#2c3e50"/>
+                    </svg>
                 </div>
                 <span class="logo-text">Muhammad Sobri Maulana</span>
             </div>
@@ -4061,8 +4117,24 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Mobile Menu Script -->
     <script>
+        // Hide loading screen when page is loaded
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 800);
+        });
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         
@@ -4085,6 +4157,71 @@
                 navLinks.classList.remove('active');
                 menuToggle.classList.remove('active');
             }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+        });
+
+        // Add active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 
