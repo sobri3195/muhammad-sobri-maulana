@@ -3541,22 +3541,296 @@ section h2::after {
     color: var(--secondary-color);
 }
 
-/* Responsive Design for CV Section */
-@media (max-width: 768px) {
-    .cv-section h2 {
+/* Responsive Design */
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .hero h1 {
         font-size: 2rem;
+    }
+
+    .hero .credentials {
+        font-size: 1rem;
+    }
+
+    .hero .tagline {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Header and Navigation */
+    .nav-container {
+        padding: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        gap: 0.5rem;
+    }
+
+    .logo-text {
+        font-size: 0.9rem;
+    }
+
+    .logo-svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: var(--shadow);
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
+        justify-content: flex-start;
+    }
+
+    .nav-links a span {
+        margin-left: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 6rem 1rem 2rem;
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero .credentials {
+        font-size: 0.9rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.85rem;
+    }
+
+    .profile-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .pegasus-icon {
+        font-size: 15rem;
+    }
+
+    .wing-left, .wing-right {
+        font-size: 8rem;
+    }
+
+    /* Section Styles */
+    section {
+        padding: 2rem 1rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* About Section */
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text, .skills {
+        width: 100%;
+    }
+
+    .skill-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Experience Section */
+    .timeline::before {
+        left: 20px;
+    }
+
+    .experience-card {
+        padding: 1rem;
+        margin-left: 40px;
+    }
+
+    .experience-card::before {
+        left: -30px;
+    }
+
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .period {
+        align-items: flex-start;
+    }
+
+    .achievements li {
+        font-size: 0.9rem;
+    }
+
+    /* Education Section */
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .training-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .technical-skills .skill-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .skill-tags {
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Organizations Section */
+    .organizations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .org-card {
+        padding: 1.5rem;
+    }
+
+    .skills-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* CV Section */
+    .cv-section h2 {
+        font-size: 1.8rem;
     }
 
     .cv-category {
         padding: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .cv-category h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .personal-info-grid {
         grid-template-columns: 1fr;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .info-label {
+        font-weight: bold;
+    }
+
+    .cv-table {
+        font-size: 0.85rem;
+        overflow-x: auto;
+        display: block;
+    }
+
+    .cv-table table {
+        min-width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .cv-table th,
+    .cv-table td {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.8rem;
     }
 
     .pub-item {
@@ -3576,12 +3850,79 @@ section h2::after {
         grid-template-columns: 1fr;
     }
 
-    .cv-table {
+    /* Portfolio Section */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-card {
+        padding: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
         font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 2rem 1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.6rem;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero .credentials {
+        font-size: 0.8rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.75rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .experience-card {
+        margin-left: 30px;
+        padding: 0.8rem;
     }
 
     .cv-table th,
     .cv-table td {
-        padding: 0.6rem 0.5rem;
+        padding: 0.5rem 0.3rem;
+        font-size: 0.75rem;
+    }
+
+    .cv-category h3 {
+        font-size: 1.1rem;
     }
 }
