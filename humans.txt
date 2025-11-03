@@ -1,0 +1,48 @@
+/* TEAM */
+Name: Muhammad Sobri Maulana
+Title: Dokter Hacker, Cybersecurity Expert
+Location: Jakarta, Indonesia
+Contact: muhammadsobrimaulana31@gmail.com
+Twitter: @muhammadsobrimaulana
+LinkedIn: /in/muhammadsobrimaulana
+GitHub: /muhammadsobrimaulana
+
+/* SITE */
+Last update: 2024
+Standards: HTML5, CSS3
+Components: Font Awesome 6.0.0
+Software: VS Code, Git
+Language: Indonesian / English
+
+/* CREDENTIALS */
+Certifications: CEH, OSCP, OSCE, CISSP, CompTIA Security+, CHFI
+Education: Medicine (Indonesian Faculty of Medicine), Computer Science (Binus University)
+Military Rank: Letda Kes (Second Lieutenant Medical)
+
+/* SPECIALIZATIONS */
+- Cybersecurity & Ethical Hacking
+- Penetration Testing
+- Software Development (SIMRS, Web, Mobile)
+- Medical Technology
+- AI in Healthcare
+- Offensive Security
+- Vulnerability Assessment
+
+/* ORGANIZATION ROLES */
+- Director at SOMANSA (2022 - Present)
+- CEO at Lactabank Startup (2016 - 2021)
+- President Director at PT Apindo Karya Lestari (2014 - 2021)
+- CEO at PT Terkoding Digital Teknologi (2013 - 2021)
+
+/* HACKER ALIASES */
+Pegasus, Mani4k Kasur, Sharko
+
+/* KEYWORDS */
+Muhammad Sobri Maulana, dokter hacker, cybersecurity Indonesia, ethical hacker, penetration tester, OSCP, CEH, OSCE, medical technology, SIMRS developer
+
+/* THANKS */
+EC-Council, Offensive Security, Binus University, Indonesian Military
+
+/* SITE REPOSITORY */
+GitHub: Private Repository
+Version: 1.0

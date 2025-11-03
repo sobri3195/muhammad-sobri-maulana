@@ -19,8 +19,20 @@ Website portofolio profesional yang menampilkan profil, keahlian, dan karya Muha
   - Scroll-to-top floating button
   - Intersection Observer untuk animasi on-scroll
 - **WhatsApp Float Button**: Tombol floating dengan animasi ripple
-- **SEO Friendly**: Struktur HTML semantik
-- **Performance**: Optimized dengan CSS animations dan minimal JavaScript
+- **SEO Optimized** ⭐ **NEW**: 
+  - Comprehensive meta tags (title, description, keywords)
+  - Structured data (Schema.org JSON-LD): Person, ProfessionalService, BreadcrumbList, WebSite
+  - Open Graph tags (Facebook/LinkedIn)
+  - Twitter Card tags
+  - Sitemap.xml untuk search engines
+  - Robots.txt untuk crawler optimization
+  - Canonical URLs
+  - Geo-location meta tags
+  - Accessibility features (aria-labels, semantic HTML)
+  - PWA support (manifest.json)
+  - Performance optimizations (.htaccess with caching, compression)
+  - Security headers
+- **Performance**: Optimized dengan CSS animations, minimal JavaScript, dan preconnect untuk CDN
 
 ## Struktur Website
 
@@ -35,11 +47,35 @@ Website portofolio profesional yang menampilkan profil, keahlian, dan karya Muha
 
 ## Teknologi yang Digunakan
 
-- HTML5 (Semantic markup)
+- HTML5 (Semantic markup dengan structured data)
 - CSS3 (Grid, Flexbox, Variables, Media Queries, Animations, Transitions)
 - JavaScript (Vanilla JS untuk interaktivity)
 - Font Awesome 6.0 (untuk ikon)
 - SVG (Custom logo design)
+- Schema.org JSON-LD (untuk structured data)
+- Apache .htaccess (untuk performance & security)
+
+## File SEO
+
+Website ini dilengkapi dengan file-file SEO untuk memaksimalkan visibility di search engines:
+
+- **sitemap.xml** - Peta situs untuk Google dan search engines lainnya
+- **robots.txt** - Instruksi untuk web crawlers
+- **.htaccess** - Optimisasi server (caching, compression, security headers)
+- **manifest.json** - PWA support untuk mobile
+- **humans.txt** - Informasi tentang pembuat website
+- **SEO-GUIDE.md** - Panduan lengkap implementasi SEO
+- **SEO-IMPLEMENTATION.md** - Summary detail implementasi SEO
+- **SEO-CHECKLIST.md** - Checklist cepat untuk setup SEO
+
+### Target SEO
+Website ini dioptimalkan untuk ranking halaman pertama Google dengan keyword:
+- **Muhammad Sobri Maulana** (Primary target)
+- dr Muhammad Sobri Maulana
+- Letda Kes Muhammad Sobri Maulana
+- dokter hacker Indonesia
+- cybersecurity Indonesia
+- CEH Indonesia / OSCP Indonesia
 
 ## Cara Penggunaan
 
@@ -47,7 +83,14 @@ Website portofolio profesional yang menampilkan profil, keahlian, dan karya Muha
 2. Tambahkan foto profil Anda dengan nama `profile.jpg`
 3. Sesuaikan konten di `index.html` dengan informasi Anda
 4. Sesuaikan warna dan gaya di `styles.css` sesuai preferensi
-5. Buka `index.html` di browser
+5. **SEO Setup** (PENTING untuk indexing Google):
+   - Baca **SEO-CHECKLIST.md** untuk panduan lengkap
+   - Update semua URL domain di `index.html`, `sitemap.xml`, dan `robots.txt`
+   - Buat gambar og-image.jpg dan twitter-image.jpg
+   - Daftar di Google Search Console dan Bing Webmaster
+   - Submit sitemap.xml
+   - Lihat **SEO-GUIDE.md** untuk strategi lengkap
+6. Buka `index.html` di browser
 
 ## Kustomisasi
 
