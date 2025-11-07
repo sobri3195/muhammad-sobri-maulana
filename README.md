@@ -130,7 +130,9 @@ Untuk pertanyaan, kolaborasi, atau konsultasi, silakan hubungi:
 
 - 📧 **Email**: [muhammadsobrimaulana31@gmail.com](mailto:muhammadsobrimaulana31@gmail.com)
 - 🐙 **GitHub**: [github.com/sobri3195](https://github.com/sobri3195)
-- 🌐 **Website**: [muhammadsobrimaulana.netlify.app](https://muhammadsobrimaulana.netlify.app)
+- 🌐 **Website**: 
+  - [muhammadsobrimaulana.netlify.app](https://muhammadsobrimaulana.netlify.app)
+  - [muhammad-sobri-maulana-kvr6a.sevalla.page](https://muhammad-sobri-maulana-kvr6a.sevalla.page/)
 
 ### Media Sosial
 
@@ -144,7 +146,7 @@ Untuk pertanyaan, kolaborasi, atau konsultasi, silakan hubungi:
 Jika Anda merasa terbantu dengan karya-karya saya, Anda dapat memberikan dukungan melalui:
 
 - 💰 **Lynk.id**: [muhsobrimaulana](https://lynk.id/muhsobrimaulana)
-- ☕ **Trakteer**: [g9mkave5gauns962u07t](https://trakteer.id/g9mkave5gauns962u07t)
+- ☕ **Trakteer**: [Dukungan via Trakteer](https://trakteer.id/g9mkave5gauns962u07t)
 - 🛍️ **Gumroad**: [maulanasobri.gumroad.com](https://maulanasobri.gumroad.com/)
 - 🎨 **Karyakarsa**: [muhammadsobrimaulana](https://karyakarsa.com/muhammadsobrimaulana)
 - 💝 **Nyawer**: [MuhammadSobriMaulana](https://nyawer.co/MuhammadSobriMaulana)
