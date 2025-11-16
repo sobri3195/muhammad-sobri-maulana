@@ -73,6 +73,16 @@
     --shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     --icon-size: 2rem;
     --icon-color: #3498db;
+    --touch-target-min: 44px;
+    --header-height: 80px;
+}
+
+/* Safe area for notched devices */
+@supports(padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
 }
 
 /* Dark Mode */
@@ -98,7 +108,9 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: var(--header-height);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -106,6 +118,25 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Improve touch interactions */
+@media (hover: none) and (pointer: coarse) {
+    a, button, .clickable {
+        -webkit-tap-highlight-color: rgba(52, 152, 219, 0.2);
+    }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /* Global Animations */
@@ -279,12 +310,23 @@ body {
     padding: 0.5rem 0.8rem;
     border-radius: 5px;
     position: relative;
+    min-height: var(--touch-target-min);
 }
 
-.nav-links a:hover {
-    color: var(--secondary-color);
-    background-color: var(--section-bg);
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .nav-links a:hover {
+        color: var(--secondary-color);
+        background-color: var(--section-bg);
+        transform: translateY(-2px);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .nav-links a:active {
+        color: var(--secondary-color);
+        background-color: var(--section-bg);
+        transform: scale(0.98);
+    }
 }
 
 .nav-links a.active-nav {
@@ -502,14 +544,15 @@ body {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     margin-bottom: 0.5rem;
     color: var(--primary-color);
     animation: fadeInUp 1.2s ease-out;
+    line-height: 1.2;
 }
 
 .credentials {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     color: var(--text-color);
     margin-bottom: 0.5rem;
     font-weight: 500;
@@ -517,9 +560,10 @@ body {
 }
 
 .tagline {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--secondary-color);
     animation: fadeInUp 1.6s ease-out;
+    line-height: 1.4;
 }
 
 /* Section Styles */
@@ -537,6 +581,7 @@ section h2 {
     position: relative;
     display: inline-block;
     width: 100%;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
 section h2::after {
@@ -2388,9 +2433,17 @@ section h2::after {
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .scroll-to-top {
+        bottom: 90px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
     }
 
     .portfolio-grid,
@@ -4281,5 +4334,338 @@ section {
     .contact-item a {
         font-size: 0.9rem;
         flex-wrap: wrap;
+    }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+    .nav-container {
+        padding: 0.5rem;
+    }
+
+    .logo-svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hero h1 {
+        font-size: 1.1rem;
+    }
+
+    .hero .credentials {
+        font-size: 0.75rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.7rem;
+    }
+
+    .profile-icon {
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 1.5rem 0.8rem;
+    }
+
+    section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 4rem 1rem 2rem;
+    }
+
+    .pegasus-icon {
+        font-size: 10rem;
+    }
+
+    .wing-left, .wing-right {
+        font-size: 5rem;
+    }
+
+    .profile-icon {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+    /* Ensure all clickable elements meet minimum touch target size */
+    a, button, .clickable, .badge, .cert-badge, .tool-badge {
+        min-height: var(--touch-target-min);
+        min-width: var(--touch-target-min);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Improve spacing for touch */
+    .hero-badges {
+        gap: 1rem;
+    }
+
+    .social-links, .support-links {
+        gap: 1rem;
+    }
+
+    /* Better touch feedback */
+    a:active, button:active {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+
+    /* Improve readability on mobile */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Prevent text from being too small */
+    p, li, span {
+        font-size: max(16px, 1rem);
+    }
+
+    /* Better form inputs on mobile */
+    input, textarea, select {
+        font-size: 16px;
+        min-height: var(--touch-target-min);
+    }
+}
+
+/* Improved hover states for touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .badge:hover,
+    .cert-badge:hover,
+    .tool-badge:hover {
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    .social-link:hover,
+    .support-link:hover {
+        transform: translateY(-5px) scale(1.05);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .badge:active,
+    .cert-badge:active,
+    .tool-badge:active {
+        transform: scale(0.95);
+    }
+
+    .social-link:active,
+    .support-link:active {
+        transform: scale(0.95);
+    }
+
+    /* Remove hover animations for touch devices */
+    .skill-category:hover,
+    .cyber-category:hover,
+    .repo-card:hover {
+        transform: none;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Improve icon rendering */
+    .logo-svg, .fa, .fas, .fab {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Improve accessibility - Focus visible */
+@media (prefers-reduced-motion: no-preference) {
+    *:focus-visible {
+        outline: 3px solid var(--secondary-color);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+/* Dark mode mobile optimizations */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    body {
+        background-color: #1a1a1a;
+    }
+
+    .nav-links {
+        background-color: #2c2c2c;
+    }
+
+    /* Improve contrast for mobile dark mode */
+    section h2, .hero h1 {
+        color: #f8f9fa;
+    }
+}
+
+/* Additional Mobile Breakpoint - Medium Mobile (640px) */
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: clamp(1.3rem, 4.5vw, 2rem);
+    }
+
+    .profile-icon {
+        font-size: 2.8rem;
+    }
+
+    .skill-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .cyber-grid,
+    .github-grid,
+    .publications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Better card spacing */
+    .portfolio-card,
+    .blog-post,
+    .repo-card,
+    .publication-card {
+        padding: 1.2rem;
+    }
+
+    /* Improve button sizes */
+    .btn, .button, .support-link, .social-link {
+        padding: 0.8rem 1rem;
+        min-height: 48px;
+    }
+}
+
+/* Image optimization for mobile */
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Responsive iframes (for embedded content) */
+    iframe {
+        max-width: 100%;
+    }
+
+    /* Better spacing for sections */
+    section + section {
+        margin-top: 0;
+    }
+
+    /* Optimize grid gaps for mobile */
+    .cyber-grid,
+    .github-grid,
+    .publications-grid,
+    .portfolio-grid,
+    .blog-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* Better text selection on mobile */
+::selection {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Improve link tap areas on mobile */
+@media (max-width: 768px) {
+    a {
+        position: relative;
+    }
+
+    /* Expand tap area with pseudo-element */
+    a::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        bottom: -10px;
+        left: -10px;
+    }
+}
+
+/* Smooth scroll on iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Better focus indicators for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Remove outline for mouse users */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Improve form inputs on mobile */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="search"],
+    textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 16px;
+        border: 2px solid var(--border-color);
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: var(--secondary-color);
+        outline: none;
+    }
+}
+
+/* Better performance on mobile with will-change */
+@media (max-width: 768px) {
+    .nav-links,
+    .whatsapp-float,
+    .scroll-to-top,
+    .menu-toggle {
+        will-change: transform;
     }
 }
