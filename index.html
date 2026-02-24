@@ -4424,6 +4424,7 @@
         // Hide loading screen when page is loaded
         window.addEventListener('load', () => {
             const loadingScreen = document.getElementById('loadingScreen');
+            if (!loadingScreen) return;
             setTimeout(() => {
                 loadingScreen.classList.add('fade-out');
                 setTimeout(() => {
@@ -4435,7 +4436,10 @@
                         if (targetSection) {
                             targetSection.style.opacity = '1';
                             targetSection.style.transform = 'translateY(0)';
-                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            targetSection.scrollIntoView({
+                                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                                block: 'start'
+                            });
                         }
                     }
                 }, 500);
@@ -4444,25 +4448,44 @@
 
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const setMenuState = (isOpen) => {
+            if (!menuToggle || !navLinks) return;
+            navLinks.classList.toggle('active', isOpen);
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        if (menuToggle) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-controls', 'navLinks');
+        }
         
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = !navLinks.classList.contains('active');
+                setMenuState(isOpen);
+            });
+        }
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
+                setMenuState(false);
             });
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
+            if (navLinks && menuToggle && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                setMenuState(false);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                setMenuState(false);
             }
         });
 
@@ -4472,14 +4495,14 @@
             rootMargin: '0px 0px -10px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, observerOptions) : null;
 
         // Observe all sections
         document.addEventListener('DOMContentLoaded', () => {
@@ -4499,7 +4522,16 @@
                     section.style.transform = 'translateY(20px)';
                     section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
                 }
-                observer.observe(section);
+                if (observer) {
+                    observer.observe(section);
+                } else {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.setAttribute('rel', 'noopener noreferrer');
             });
             
             // Force show the first visible section (hero)
@@ -4520,8 +4552,9 @@
             }
         });
 
-        // Add active nav link on scroll
-        window.addEventListener('scroll', () => {
+        // Add active nav link on scroll (throttled with requestAnimationFrame)
+        let isTicking = false;
+        const handleSectionScroll = () => {
             let current = '';
             const sections = document.querySelectorAll('section');
             
@@ -4544,6 +4577,14 @@
                     link.classList.add('active-nav');
                 }
             });
+            isTicking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(handleSectionScroll);
+                isTicking = true;
+            }
         });
 
         // Scroll to Top Button
@@ -4560,7 +4601,7 @@
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth'
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
             });
         });
     </script>
@@ -4840,11 +4881,19 @@ Coba juga di muhammadsobrimaulana.netlify.app!`;
                     title: 'Perjalanan Hidup Sobri - Game Result',
                     text: text,
                     url: window.location.href
+                }).catch(() => {
+                    // User cancelled the share dialog
                 });
+                return;
+            }
+
+            // Fallback: copy to clipboard
+            if (navigator.clipboard?.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(() => alert('Hasil telah dicopy ke clipboard!'))
+                    .catch(() => alert('Gagal menyalin hasil. Silakan copy manual.'));
             } else {
-                // Fallback: copy to clipboard
-                navigator.clipboard.writeText(text);
-                alert('Hasil telah dicopy ke clipboard!');
+                alert('Fitur share tidak didukung browser ini. Silakan copy hasil secara manual.');
             }
         }
     </script>
